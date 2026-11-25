@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Baby Dhwani — Welcome Our Baby Girl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Sacramento&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Dreamy pastel watercolor twilight backdrop -->
+  <div class="ambient-backdrop" aria-hidden="true">
+    <div class="sky-wash"></div>
+    <img class="bg-cloud bg-cloud-1" src="assets/cloud.png" alt="" />
+    <img class="bg-cloud bg-cloud-2" src="assets/cloud.png" alt="" />
+    <img class="bg-cloud bg-cloud-3" src="assets/cloud.png" alt="" />
+  </div>
+
+  <main class="viewport-shell" id="viewportShell">
+    <section class="cards-stage" id="cardsStage">
+
+      <!-- MAIN ANIMATED INVITE CARD -->
+      <article class="phone-wrap phone-wrap-animated" aria-label="Animated Baby Dhwani Invitation">
+        <div class="phone-outer-ring">
+          <span class="side-btn btn-1"></span>
+          <span class="side-btn btn-2"></span>
+          <span class="side-btn btn-3"></span>
+        </div>
+
+        <div class="phone-card card-stage" id="mainCard">
+          <!-- Warm cold-press watercolor paper base -->
+          <div class="paper-layer"></div>
+          <div class="paper-vignette"></div>
+
+          <!-- Shared SVG filter defs for organic watercolor ink edges -->
+          <svg class="svg-defs" width="0" height="0" aria-hidden="true">
+            <defs>
+              <filter id="wc-ink" x="-8%" y="-8%" width="116%" height="116%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+              <filter id="wc-soft" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.9" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+            </defs>
+          </svg>
+
+          <!-- Ambient floating bokeh sparkles -->
+          <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+
+          <!-- Drifting watercolor clouds layer -->
+          <div class="clouds-layer" aria-hidden="true">
+            <img id="cloudIntroA" class="wc-cloud" src="assets/cloud.png" alt="" />
+            <img id="cloudIntroB" class="wc-cloud" src="assets/cloud.png" alt="" />
+            <img id="cloudClimbA" class="wc-cloud" src="assets/cloud.png" alt="" />
+            <img id="cloudClimbB" class="wc-cloud" src="assets/cloud.png" alt="" />
+            <img id="cloudFooter" class="wc-cloud" src="assets/cloud.png" alt="" />
+          </div>
+
+          <!-- ACT 0: Intro "We are on cloud nine" + Animated Baby Dhwani -->
+          <div class="intro-overlay" id="introOverlay">
+            <div class="calligraphy-stack intro-stack" id="introTitle">
+              <span class="c-line line-1" data-bind="introLine1">We are</span>
+              <span class="c-line line-2" data-bind="introLine2">on cloud</span>
+              <span class="c-line line-3" data-bind="introLine3">nine</span>
+            </div>
+
+            <div class="intro-name-reveal" id="introNameReveal">
+              <div class="intro-kicker" data-bind="introSubtitle">INTRODUCING</div>
+              <div class="intro-baby-name-wrap">
+                <span class="intro-baby-name" data-bind="fullBabyTitle">Baby Dhwani</span>
+              </div>
+              <div class="intro-flourish-line">
+                <svg viewBox="0 0 180 18" class="flourish-svg" aria-hidden="true">
+                  <path d="M12 9 Q50 2 90 9 T168 9" fill="none" stroke="#d89e97" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+                  <circle cx="90" cy="9" r="2.2" fill="#9fb6ad" opacity="0.85" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACT 1: "Our baby girl is here" Calligraphy -->
+          <div class="girl-overlay" id="girlOverlay">
+            <div class="calligraphy-stack girl-stack">
+              <span class="c-line g-line-1" data-bind="girlAnnouncement1">Our</span>
+              <span class="c-line g-line-2" data-bind="girlAnnouncement2">baby girl</span>
+              <span class="c-line g-line-3" data-bind="girlAnnouncement3">is here</span>
+            </div>
+          </div>
+
+          <!-- MAIN ASSEMBLY: Crest + Florals + Balloon + Ribbon -->
+          <div class="crest-assembly" id="crestAssembly">
+
+            <!-- Pastel Powder-Blue Baroque Shield Crest SVG -->
+            <svg class="shield-crest-svg" id="shieldCrestSvg" viewBox="0 0 360 440" aria-hidden="true">
+              <g filter="url(#wc-soft)">
+                <!-- Left half draws upward from behind the balloon to top center dip -->
+                <path
+                  id="crestPathLeft"
+                  class="crest-stroke"
+                  d="M 180 330 C 122 315, 76 268, 66 202 C 62 174, 70 144, 62 126 C 55 110, 42 108, 44 90 C 46 72, 66 66, 88 68 C 122 71, 152 62, 180 74"
+                />
+                <!-- Right half mirrors upward symmetrically -->
+                <path
+                  id="crestPathRight"
+                  class="crest-stroke"
+                  d="M 180 330 C 238 315, 284 268, 294 202 C 298 174, 290 144, 298 126 C 305 110, 318 108, 316 90 C 314 72, 294 66, 272 68 C 238 71, 208 62, 180 74"
+                />
+              </g>
+            </svg>
+
+            <!-- Symmetrical Floral Crest Wings -->
+            <div class="garland-wing-wrap wing-left" id="wingLeft">
+              <img src="assets/crest-garland-wing.png" class="wc-img garland-img" alt="" />
+            </div>
+            <div class="garland-wing-wrap wing-right" id="wingRight">
+              <img src="assets/crest-garland-wing.png" class="wc-img garland-img" alt="" />
+            </div>
+
+            <!-- Top Corner Rose Clusters -->
+            <div class="top-floral-wrap top-left" id="topFloralLeft">
+              <img src="assets/crest-top-florals.png" class="wc-img top-floral-img" alt="" />
+            </div>
+            <div class="top-floral-wrap top-right" id="topFloralRight">
+              <img src="assets/crest-top-florals.png" class="wc-img top-floral-img" alt="" />
+            </div>
+
+            <!-- Top Center Blush Satin Bow -->
+            <div class="pink-bow-wrap" id="pinkBowWrap">
+              <img src="assets/pink-bow.png" class="wc-img pink-bow-img" alt="Pink Watercolor Bow" />
+            </div>
+
+            <!-- Arched BABY + Calligraphic Dhwani inside Upper Crest -->
+            <div class="crest-typography" id="crestTypography">
+              <svg class="arched-baby-svg" viewBox="0 0 260 95" aria-hidden="true">
+                <defs>
+                  <path id="babyArcPath" d="M 48 68 Q 130 30 212 68" />
+                </defs>
+                <text class="arched-baby-text" text-anchor="middle">
+                  <textPath href="#babyArcPath" startOffset="50%">
+                    <tspan class="baby-char" id="babyChar0">B</tspan><tspan class="baby-char" id="babyChar1">A</tspan><tspan class="baby-char" id="babyChar2">B</tspan><tspan class="baby-char" id="babyChar3">Y</tspan>
+                  </textPath>
+                </text>
+              </svg>
+
+              <div class="crest-dhwani-wrap" id="crestDhwaniWrap">
+                <span class="crest-dhwani-name" id="crestDhwaniName" data-bind="babyName">Dhwani</span>
+              </div>
+            </div>
+
+            <!-- HERO BALLOON GROUP (Finalized Watercolor Asset + Dynamic Placard) -->
+            <div class="balloon-hero-group" id="heroBalloon">
+              <div class="balloon-sway-inner" id="heroBalloonSway">
+                <img src="assets/balloon-hero.png" class="wc-img balloon-hero-img" alt="Hot air balloon with beagle puppy" />
+
+                <!-- Crisp dynamic placard text pinned inside the puppy's card -->
+                <div class="basket-sign-text" id="basketSignText">
+                  <span class="sign-top" data-bind="basketSignTop">WELCOME</span>
+                  <span class="sign-bottom" data-bind="basketSignBottom">BABY DHWANI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACT 4: Unfurling Sage Ribbon Banner + Curved Date SVG -->
+            <div class="sage-ribbon-wrap" id="sageRibbonWrap">
+              <img src="assets/sage-ribbon.png" class="wc-img sage-ribbon-img" alt="" />
+              <svg class="ribbon-date-svg" viewBox="0 0 360 165" aria-hidden="true">
+                <defs>
+                  <path id="ribbonDateArc" d="M 72 74 Q 180 102 288 74" />
+                </defs>
+                <text class="ribbon-date-text" text-anchor="middle">
+                  <textPath href="#ribbonDateArc" startOffset="50%" id="ribbonDateTextPath">25TH NOVEMBER 2026</textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- ACT 5: Footer Typography (Proud Parents & Elated Family) -->
+          <footer class="invite-footer" id="inviteFooter">
+            <div class="footer-block footer-block-1" id="footerBlock1">
+              <div class="footer-heading" data-bind="parentsHeading">PROUD PARENTS</div>
+              <div class="footer-names" data-bind="parentsNames">MEERA &amp; AARAV</div>
+            </div>
+            <div class="footer-block footer-block-2" id="footerBlock2">
+              <div class="footer-heading" data-bind="familyHeading">ELATED FAMILY</div>
+              <div class="footer-names" data-bind="familyNames">THE SHARMA &amp; PATEL FAMILIES</div>
+            </div>
+          </footer>
+
+          <!-- Animated Flapping Watercolor Butterflies -->
+          <div class="butterflies-layer" aria-hidden="true">
+            <div class="bfly-actor" id="bfly0">
+              <div class="bfly-wings">
+                <span class="wing wing-l"></span>
+                <span class="wing wing-r"></span>
+              </div>
+            </div>
+            <div class="bfly-actor" id="bfly1">
+              <div class="bfly-wings">
+                <span class="wing wing-l"></span>
+                <span class="wing wing-r"></span>
+              </div>
+            </div>
+            <div class="bfly-actor" id="bfly2">
+              <div class="bfly-wings">
+                <span class="wing wing-l"></span>
+                <span class="wing wing-r"></span>
+              </div>
+            </div>
+            <div class="bfly-actor" id="bfly3">
+              <div class="bfly-wings">
+                <span class="wing wing-l"></span>
+                <span class="wing wing-r"></span>
+              </div>
+            </div>
+            <div class="bfly-actor" id="bfly4">
+              <div class="bfly-wings">
+                <span class="wing wing-l"></span>
+                <span class="wing wing-r"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Subtle Frosted-Glass Pill Control Bar -->
+    <nav class="controls-bar" aria-label="Invitation playback controls">
+      <button type="button" class="ctrl-btn" id="btnReplayIntro" title="Replay from Intro">
+        <span class="ctrl-icon">↺</span>
+        <span>Replay Intro</span>
+      </button>
+      <button type="button" class="ctrl-btn" id="btnPlayPause" title="Play or Pause Animation">
+        <span class="ctrl-icon" id="playPauseIcon">❚❚</span>
+        <span id="playPauseLabel">Pause</span>
+      </button>
+      <button type="button" class="ctrl-btn is-active" id="btnLoop" title="Toggle Auto Loop">
+        <span class="ctrl-icon">∞</span>
+        <span id="loopLabel">Loop: On</span>
+      </button>
+    </nav>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,771 @@
+/* ==========================================================================
+   Baby Dhwani — Animated Watercolor Invitation Styles
+   ========================================================================== */
+
+:root {
+  --paper-cream: #f6f1e7;
+  --blush-ink: #df9d96;
+  --blush-deep: #cc847d;
+  --sage-ink: #6e8d83;
+  --sage-soft: #9bb4ab;
+  --crest-blue: #bfd4db;
+  --text-muted: #7f746f;
+  --shadow-soft: 0 28px 64px rgba(84, 71, 64, 0.16);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  color: var(--blush-deep);
+  background: #d8c8be;
+  overflow-x: hidden;
+}
+
+/* ---------- Dreamy Twilight Sky Backdrop ---------- */
+.ambient-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sky-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(164, 191, 189, 0.65), transparent 55%),
+    radial-gradient(circle at 82% 22%, rgba(177, 198, 201, 0.72), transparent 52%),
+    radial-gradient(circle at 48% 88%, rgba(242, 194, 173, 0.85), transparent 60%),
+    linear-gradient(175deg, #9eb4b7 0%, #c6c7c4 45%, #e5c6b5 78%, #eed2be 100%);
+}
+
+.bg-cloud {
+  position: absolute;
+  opacity: 0.34;
+  filter: blur(2px) saturate(0.85);
+  will-change: transform;
+}
+
+.bg-cloud-1 {
+  width: min(55vw, 560px);
+  top: 8%;
+  left: -8%;
+  animation: bgCloudDriftA 46s ease-in-out infinite alternate;
+}
+
+.bg-cloud-2 {
+  width: min(60vw, 620px);
+  top: 42%;
+  right: -12%;
+  animation: bgCloudDriftB 54s ease-in-out infinite alternate;
+}
+
+.bg-cloud-3 {
+  width: min(48vw, 480px);
+  bottom: 4%;
+  left: 16%;
+  opacity: 0.28;
+  animation: bgCloudDriftA 62s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes bgCloudDriftA {
+  from { transform: translate3d(-4%, 0, 0) scale(1); }
+  to   { transform: translate3d(7%, -2%, 0) scale(1.05); }
+}
+
+@keyframes bgCloudDriftB {
+  from { transform: translate3d(5%, 1%, 0) scale(1.02); }
+  to   { transform: translate3d(-6%, -2%, 0) scale(0.98); }
+}
+
+/* ---------- Viewport Layout ---------- */
+.viewport-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 14px 18px;
+}
+
+.cards-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 38px);
+  width: 100%;
+  max-width: 960px;
+}
+
+/* ---------- Phone Card Silhouette (Matching Screen Recording) ---------- */
+.phone-wrap {
+  position: relative;
+  /* Responsive 9:16 card that always fits cleanly inside viewport height */
+  height: min(84dvh, 740px);
+  width: calc(min(84dvh, 740px) * 9 / 16);
+  max-width: calc(100vw - 28px);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .phone-wrap {
+    width: min(92vw, calc(84dvh * 9 / 16));
+    height: calc(min(92vw, calc(84dvh * 9 / 16)) * 16 / 9);
+  }
+}
+
+.phone-outer-ring {
+  position: absolute;
+  inset: -7px;
+  border-radius: 38px;
+  border: 1.5px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.24);
+  pointer-events: none;
+}
+
+.phone-outer-ring .side-btn {
+  position: absolute;
+  left: -3px;
+  width: 3px;
+  border-radius: 3px 0 0 3px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.phone-outer-ring .btn-1 { top: 13%; height: 3.4%; }
+.phone-outer-ring .btn-2 { top: 19%; height: 6.2%; }
+.phone-outer-ring .btn-3 { top: 26.8%; height: 6.2%; }
+
+.phone-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  background-color: var(--paper-cream);
+  box-shadow: var(--shadow-soft), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  container-type: inline-size;
+  user-select: none;
+}
+
+.paper-layer {
+  position: absolute;
+  inset: 0;
+  background: url("assets/paper-texture.jpg") center / cover no-repeat;
+  opacity: 0.94;
+  pointer-events: none;
+}
+
+.paper-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, transparent 58%, rgba(214, 198, 179, 0.24) 100%);
+  pointer-events: none;
+}
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.wc-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* ---------- Sparkle Motes ---------- */
+.sparkle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sparkle-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 248, 232, 0.95) 0%, rgba(227, 168, 160, 0.45) 60%, transparent 100%);
+  animation: sparkleFloat var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+  opacity: 0;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.5); }
+  40%, 60% { opacity: 0.72; transform: translate3d(0, -10px, 0) scale(1.15); }
+}
+
+/* ---------- Clouds Layer ---------- */
+.clouds-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.wc-cloud {
+  position: absolute;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+#cloudIntroA {
+  width: 56cqw;
+  left: -8cqw;
+  top: 22%;
+}
+
+#cloudIntroB {
+  width: 62cqw;
+  right: -12cqw;
+  top: 52%;
+  transform: scaleX(-1);
+}
+
+#cloudClimbA {
+  width: 68cqw;
+  left: -14cqw;
+  top: 38%;
+}
+
+#cloudClimbB {
+  width: 62cqw;
+  right: -14cqw;
+  top: 12%;
+  transform: scaleX(-1);
+}
+
+#cloudFooter {
+  width: 66cqw;
+  right: -6cqw;
+  bottom: 2.5%;
+  z-index: 6;
+}
+
+/* ---------- Typography Stacks (Act 0 Intro & Act 1 Girl Announcement) ---------- */
+.intro-overlay,
+.girl-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calligraphy-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Great Vibes", "Sacramento", "Brush Script MT", cursive;
+  color: var(--blush-ink);
+  filter: url(#wc-ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+  transform: rotate(-7deg);
+}
+
+.intro-stack {
+  margin-top: 7.5cqw;
+  line-height: 0.88;
+}
+
+.intro-stack .c-line {
+  font-size: 16.5cqw;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  will-change: transform, opacity;
+}
+
+.intro-stack .line-2 {
+  margin-left: 3cqw;
+}
+
+.intro-stack .line-3 {
+  margin-left: 10cqw;
+}
+
+/* Animated Baby Dhwani Intro Flourish */
+.intro-name-reveal {
+  margin-top: 2cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.intro-kicker {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.9cqw;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  color: var(--sage-ink);
+  margin-bottom: 0.4cqw;
+}
+
+.intro-baby-name-wrap {
+  position: relative;
+  padding: 0 4cqw;
+  will-change: clip-path, opacity;
+}
+
+.intro-baby-name {
+  font-family: "Sacramento", "Great Vibes", cursive;
+  font-size: 12.6cqw;
+  line-height: 1.05;
+  color: var(--blush-deep);
+  filter: url(#wc-ink);
+}
+
+.flourish-svg {
+  width: 44cqw;
+  height: auto;
+  margin-top: -1cqw;
+}
+
+/* Act 1: "Our baby girl is here" */
+.girl-overlay {
+  justify-content: flex-end;
+  padding-bottom: 16cqw;
+}
+
+.girl-stack {
+  line-height: 0.86;
+}
+
+.girl-stack .c-line {
+  font-size: 18cqw;
+  will-change: transform, opacity;
+}
+
+.girl-stack .g-line-1 {
+  margin-right: 16cqw;
+}
+
+.girl-stack .g-line-2 {
+  margin-left: 2cqw;
+}
+
+.girl-stack .g-line-3 {
+  margin-left: 14cqw;
+}
+
+/* ---------- Main Crest Assembly ---------- */
+.crest-assembly {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Baroque Shield Outline SVG */
+.shield-crest-svg {
+  position: absolute;
+  left: 50%;
+  top: 7cqw;
+  width: 92cqw;
+  height: auto;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.crest-stroke {
+  fill: none;
+  stroke: var(--crest-blue);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.88;
+}
+
+/* Symmetrical Floral Crest Wings */
+.garland-wing-wrap {
+  position: absolute;
+  top: 33cqw;
+  width: 51cqw;
+  z-index: 4;
+  transform-origin: 50% 82%;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+.wing-left {
+  left: 2.5cqw;
+}
+
+.wing-right {
+  right: 2.5cqw;
+}
+
+.wing-right .garland-img {
+  transform: scaleX(-1);
+}
+
+/* Top Corner Florals */
+.top-floral-wrap {
+  position: absolute;
+  top: 4cqw;
+  width: 24cqw;
+  z-index: 6;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+.top-left {
+  left: 14cqw;
+}
+
+.top-left .top-floral-img {
+  transform: rotate(-72deg);
+}
+
+.top-right {
+  right: 14cqw;
+}
+
+.top-right .top-floral-img {
+  transform: scaleX(-1) rotate(-72deg);
+}
+
+/* Top Center Blush Bow */
+.pink-bow-wrap {
+  position: absolute;
+  left: 50%;
+  top: 8.5cqw;
+  width: 31cqw;
+  transform: translateX(-50%);
+  z-index: 8;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+/* Arched BABY + Calligraphic Dhwani inside Crest */
+.crest-typography {
+  position: absolute;
+  left: 50%;
+  top: 23.5cqw;
+  width: 72cqw;
+  transform: translateX(-50%);
+  z-index: 7;
+  text-align: center;
+}
+
+.arched-baby-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.arched-baby-text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  fill: var(--blush-ink);
+  filter: url(#wc-ink);
+}
+
+.baby-char {
+  opacity: 0;
+}
+
+.crest-dhwani-wrap {
+  margin-top: -11cqw;
+  display: inline-block;
+  will-change: clip-path, opacity;
+  opacity: 0;
+}
+
+.crest-dhwani-name {
+  font-family: "Sacramento", "Great Vibes", cursive;
+  font-size: 16cqw;
+  line-height: 1;
+  color: var(--blush-deep);
+  filter: url(#wc-ink);
+}
+
+/* ---------- Hero Balloon Group ---------- */
+.balloon-hero-group {
+  position: absolute;
+  left: 50%;
+  top: 20cqw;
+  width: 84cqw;
+  transform: translate3d(-50%, 0, 0);
+  transform-origin: 50% 42%;
+  z-index: 5;
+  will-change: transform, opacity;
+}
+
+.balloon-sway-inner {
+  position: relative;
+  width: 100%;
+  transform-origin: 50% 35%;
+  animation: balloonSway 5.6s ease-in-out infinite;
+}
+
+@keyframes balloonSway {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1.1deg); }
+  50%      { transform: translate3d(0, -1.2cqw, 0) rotate(1.1deg); }
+}
+
+.balloon-hero-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Dynamic Placard Text locked onto puppy's blank cream card */
+.basket-sign-text {
+  position: absolute;
+  left: 56.9%;
+  top: 65.5%;
+  width: 18.6%;
+  height: 11.4%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(11deg);
+  padding: 2px;
+  color: #a46b65;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.sign-top {
+  font-size: 1.45cqw;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+
+.sign-bottom {
+  font-size: 1.56cqw;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.08;
+  white-space: nowrap;
+}
+
+/* ---------- Act 4: Sage Ribbon Banner + Curved Date ---------- */
+.sage-ribbon-wrap {
+  position: absolute;
+  left: 50%;
+  top: 85.5cqw;
+  width: 88cqw;
+  transform: translateX(-50%);
+  z-index: 6;
+  will-change: clip-path, transform, opacity;
+  opacity: 0;
+}
+
+.sage-ribbon-img {
+  width: 100%;
+}
+
+.ribbon-date-svg {
+  position: absolute;
+  left: 0;
+  top: 5%;
+  width: 100%;
+  height: 95%;
+  overflow: visible;
+}
+
+.ribbon-date-text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  fill: #5f7b72;
+  opacity: 0;
+}
+
+/* ---------- Act 5: Footer Text ---------- */
+.invite-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9.5cqw;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5.5cqw;
+  text-align: center;
+  padding: 0 7cqw;
+  pointer-events: none;
+}
+
+.footer-block {
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+.footer-heading {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.7cqw;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--sage-ink);
+  margin-bottom: 0.8cqw;
+}
+
+.footer-names {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 4.05cqw;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--blush-ink);
+}
+
+/* ---------- Flapping Watercolor Butterflies ---------- */
+.butterflies-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.bfly-actor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10cqw;
+  height: 7.3cqw;
+  margin-left: -5cqw;
+  margin-top: -3.65cqw;
+  perspective: 220px;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+.bfly-wings {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.bfly-wings .wing {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-image: url("assets/butterfly.png");
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  backface-visibility: visible;
+}
+
+.bfly-wings .wing-l {
+  left: 0;
+  background-position: left center;
+  transform-origin: right center;
+  animation: flapLeft 0.28s ease-in-out infinite alternate;
+}
+
+.bfly-wings .wing-r {
+  right: 0;
+  background-position: right center;
+  transform-origin: left center;
+  animation: flapRight 0.28s ease-in-out infinite alternate;
+}
+
+.bfly-actor.is-perched .wing-l {
+  animation-duration: 1.45s;
+}
+
+.bfly-actor.is-perched .wing-r {
+  animation-duration: 1.45s;
+}
+
+@keyframes flapLeft {
+  from { transform: rotateY(14deg); }
+  to   { transform: rotateY(64deg); }
+}
+
+@keyframes flapRight {
+  from { transform: rotateY(-14deg); }
+  to   { transform: rotateY(-64deg); }
+}
+
+/* ---------- Controls Pill Bar ---------- */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(250, 245, 237, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 28px rgba(74, 62, 56, 0.12);
+}
+
+.ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border: 1px solid rgba(190, 174, 162, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  color: #6b5d57;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+
+.ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.96);
+  transform: translateY(-1px);
+}
+
+.ctrl-btn.is-active {
+  background: rgba(142, 166, 157, 0.22);
+  border-color: rgba(110, 141, 131, 0.48);
+  color: #48635a;
+}
+
+.ctrl-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Pause state freezes ambient CSS animations cleanly too */
+body.is-paused .balloon-sway-inner,
+body.is-paused .wing-l,
+body.is-paused .wing-r,
+body.is-paused .sparkle-dot,
+body.is-paused .bg-cloud {
+  animation-play-state: paused !important;
+}
